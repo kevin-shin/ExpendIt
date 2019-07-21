@@ -1,6 +1,5 @@
 let express = require("express"),
     passport = require("passport"),
-    middleware = require("../middleware/index");
     User = require("../models/user");
 
 let router = express.Router();
@@ -8,7 +7,6 @@ let router = express.Router();
 /*------------ MAIN -----------*/
 router.get("/", function (req, res) {
     if (req.isAuthenticated()) {
-        console.log("Hit authentication");
         res.render("main");
     } else {
         res.redirect("/login");

@@ -1,24 +1,27 @@
 <% include partials/header.ejs %>
 
+<script type="module">
+    import { drawChart } from "../js/index.js"
+    drawChart();
+</script>
+
 <div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
             <h3>Expend It</h3>
         </div>
-
         <ul class="list-unstyled components">
             <li>
                 <a href="#"">New Item</a>
             </li>
             <li>
-                <a href="#">New Category</a>
+                <a href=" #">New Category</a>
             </li>
             <li>
                 <a href="#">See Report</a>
             </li>
         </ul>
-
     </nav>
     <!-- Page Content -->
     <div id="content">
@@ -26,6 +29,7 @@
             <div>
                 <p> Welcome <%= currentUser.username %>!</p>
             </div>
+            <div id="pieData"></div>
         </nav>
     </div>
 </div>

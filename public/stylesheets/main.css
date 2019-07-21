@@ -86,3 +86,19 @@ ul ul a {
     min-height: 100vh;
     transition: all 0.3s;
 }
+
+.form-signin {
+    width: 30%;
+    display: center;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.form-signin > h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.form-control {
+    margin: 10px 0px;
+}
