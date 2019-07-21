@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
         console.log("Hit authentication");
         res.render("main");
     } else {
-        res.render("login");
+        res.redirect("/login");
     }
 });
 
