@@ -47,4 +47,6 @@ router.get("/logout", function(req, res){
 	// res.redirect("/campgrounds");
 });
 
+router.get("/item/new", function(req, res))
+
 module.exports = router;

@@ -9,23 +9,19 @@ const express = require("express"),
 const app = express();
 const indexRoutes = require("./routes/index");
 
-// const commentRoutes = require("./routes/comments"),
-// 	  campgroundRoutes = require("./routes/campgrounds"),
-// 	  
-
-// mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://localhost/expend_it");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-// //PASSPORT CONFIGURATION
-// app.use(require("express-session")({
-// 	secret: "Once again Rusy wins cutest dog!",
-// 	resave: false,
-// 	saveUninitialized: false
-// }));
+//PASSPORT CONFIGURATION
+app.use(require("express-session")({
+	secret: "Once again Rusy wins cutest dog!",
+	resave: false,
+	saveUninitialized: false
+}));
 
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -42,7 +38,6 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
-// app.use("/campgrounds", campgroundRoutes);
 // app.use("/campgrounds/:id/comments", commentRoutes);
 
 app.listen(3000, function(){
