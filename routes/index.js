@@ -1,52 +1,54 @@
 let express = require("express"),
-    router = express.Router();
+    passport = require("passport"),
+    middleware = require("../middleware/index");
+    User = require("../models/user");
 
-let passport = require("passport");
-let User = require("../models/user");
+let router = express.Router();
 
-router.get("/", function(req, res){
-    res.render("main");
+/*------------ MAIN -----------*/
+router.get("/", function (req, res) {
+    if (req.isAuthenticated()) {
+        console.log("Hit authentication");
+        res.render("main");
+    } else {
+        res.render("login");
+    }
 });
 
-//AUTHORIZATION ROUTES
-router.get("/register", function(req, res){
-	res.send("GET REQUEST, REGISTER");
+/*-------- AUTHORIZATION ROUTES --------*/
+router.get("/register", function (req, res) {
+    res.render("register");
 });
 
-router.post("/register", function(req, res){
-    // var newUser = new User({username: req.body.username});
-    // User.register(newUser, req.body.password, function(err, user){
-    //     if(err){
-    //         return res.render("register", {error: err.message});
-    //     }
-    //     passport.authenticate("local")(req, res, function(){
-    //        req.flash("success", "Successfully Signed Up! Nice to meet you " + req.body.username);
-    //        res.redirect("/campgrounds"); 
-    //     });
-    // });
+router.post("/register", function (req, res) {
+    let newUser = new User({ username: req.body.username });
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            return res.render("register", { error: err.message });
+        }
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/");
+        });
+    });
 });
 
 
-//login form
-router.get("/login", function(req, res){
-	res.send("GET LOGIN");
+/*----------- LOGIN ------------*/
+router.get("/login", function (req, res) {
+    res.render("login");
 });
 
-// router.post("/login", passport.authenticate("local", {
-// 	successRedirect: "/campgrounds",
-// 	failureRedirect: "/login"
-// }), function(req, res){
-	
-// });
-
-//logout
-router.get("/logout", function(req, res){
-    res.send("LOGOUT");
-	// req.logout();
-	// req.flash("success", "Logged you out!");
-	// res.redirect("/campgrounds");
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+}), function (req, res) {
 });
 
-router.get("/item/new", function(req, res))
+/*------------ LOG OUT ------------*/
+router.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+});
+
 
 module.exports = router;
