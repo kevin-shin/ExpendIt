@@ -1,0 +1,44 @@
+<%include partials/header %>
+
+<script>
+    document.getElementById("filterButton").onclick = function () { console.log("hit button"); };
+    $("#filterButton").on("click", function(){
+        // $("#itemContainer").css("background-color", "blue");
+    })
+</script>
+
+
+<div class="container-fluid">
+    <div class="row" id="report-container">
+        <div class="col-sm-6" id="itemContainer">
+            <div id="itemBar">
+                <ul class="list-unstyled components" style="margin-top: 15px;">
+                    <% currentUser.itemCollection.forEach(function(item){ %>
+                    <% console.log(item) %>
+                    <li class="item">
+                        <p> <%= item.name %></p>
+                        <h4 class="pull-right"> $<%= item.price %></h4>
+                        <p> <%= item.category %> </p>
+                        <p> Description </p>
+                    </li>
+                    <% }) %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="stats">
+                <button id="filterButton" class="pull-right btn btn-outline-danger">Filter By</button>
+                <p> Standard Deviation: $<%= stdDev %></p>
+                <p> Average: $<%= average %> </p>
+                <p> Maximum: $<%= max %> </p>
+                <p> Item Count: <%= count %></p>
+            </div>
+            <div>
+                <p> more here</p>
+                <p> image of some kind</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<%include partials/footer %>

@@ -7,8 +7,9 @@ const express = require("express"),
 	  LocalStrategy = require("passport-local");
 
 const User = require("./models/user");
-const indexRoutes = require("./routes/index");
-
+const indexRoutes = require("./routes/index"),
+	  itemRoutes = require("./routes/items"),
+	  reportRoutes = require("./routes/report");
 
 const app = express();
 
@@ -42,6 +43,8 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
+app.use("/item", itemRoutes);
+app.use("/report", reportRoutes);
 
 app.listen(3000, function(){
 	console.log("--------> Application started.");

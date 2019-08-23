@@ -1,8 +1,22 @@
 <% include partials/header.ejs %>
 
-<script type="module">
-    import { drawChart } from "../js/index.js"
-    drawChart();
+<script type="module" type='text/javascript'>
+    import { drawChart } from "../js/index.js";
+    $(document).ready(function () {
+        let exampleData = { a: 9, b: 50.5, c: 30.5, d: 8, e: 12 };
+        let data = <%- JSON.stringify(userData) %>; //right now, you're using the whole thing. Consider cleaning
+                                                    //this up from the start. 
+        let dataToDraw = {};
+        for (let category of Object.keys(data)){
+            let categoryTotal = 0;
+            for (let item of data[category]){
+                categoryTotal += parseFloat(item.price);
+            }
+            dataToDraw[category]=categoryTotal;
+        }
+        drawChart(dataToDraw);
+    })
+
 </script>
 
 <div class="wrapper">
@@ -13,13 +27,13 @@
         </div>
         <ul class="list-unstyled components">
             <li>
-                <a href="#"">New Item</a>
+                <a href="/profile">View Profile</a>
             </li>
             <li>
-                <a href=" #">New Category</a>
+                <a href="/item/new">New Item</a>
             </li>
             <li>
-                <a href="#">See Report</a>
+                <a href="/report">See Report</a>
             </li>
         </ul>
     </nav>
@@ -27,7 +41,7 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div>
-                <p> Welcome <%= currentUser.username %>!</p>
+                <p class="text-left"> Welcome <%= currentUser.username %>!</p>
             </div>
             <div id="pieData"></div>
         </nav>
