@@ -7,7 +7,7 @@ a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
+    padding: 5px 10px;
     background: #fff;
     border: none;
     border-radius: 0;
@@ -152,4 +152,13 @@ li > p {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+text {
+    font-size: 24px;
+}
+
+#scatterPlot {
+    margin: 0px;
+    padding: 0px;
 }

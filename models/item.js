@@ -10,7 +10,9 @@ let itemSchema = new mongoose.Schema({
 			ref: "User"
 		},
 		username: String
-	}
+	},
+	date: Date,
+	description: String
 });
 
 module.exports = mongoose.model("Item", itemSchema);

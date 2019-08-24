@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<!--
+	Miniport by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+
+<head>
+    <title>Kevin Shin</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<div id="myDiv" style="width: 450px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+<script type="module" type='text/javascript'>
+
+var data = [
+  {
+    x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
+    y: [1, 3, 6],
+    type: 'scatter'
+  }
+];
+
+Plotly.newPlot('myDiv', data);
+    // let drawScatter = function (data) {
+    //     const margin = { top: 15, right: 15, bottom: 15, left: 15 },
+    //         width = 500 - margin.left - margin.right,
+    //         height = 300 - margin.top - margin.bottom;
+
+    //     // parse the date / time
+    //     //var parseTime = d3.timeParse("%d-%b-%y");
+
+    //     const xScale = d3.scaleTime();
+    //     const yScale = d3.scaleLinear();
+
+    //     let x = xScale.range([0, width]);
+    //     let y = yScale.range([height, 0]);
+
+    //     let svg = d3.select("body").append("svg")
+    //         .attr("width", width + margin.left + margin.right)
+    //         .attr("height", height + margin.top + margin.bottom)
+    //         .append("g")
+    //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+    //     const xAxis = d3.axisBottom()
+    //             .scale(xScale)
+    //             .tickPadding(15)
+    //             .tickSize(-width)
+    //             .selectAll("text")	
+    //     .style("text-anchor", "end")
+    //     .attr("dx", "-.8em")
+    //     .attr("dy", ".15em")
+    //     .attr("transform", "rotate(-65)");;
+
+    //     const yAxis = d3.axisLeft()
+    //             .scale(yScale)
+    //             .ticks(5)
+    //             .tickPadding(15)
+    //             .tickSize(-height);
+
+    //     svg.append("g")
+    //         .attr("transform", "translate(0," + height + ")")
+    //         .call(d3.axisBottom(x));
+
+    //     svg.append("g")
+    //         .call(d3.axisLeft(y));
+
+    //     // draw dots
+    //     svg.selectAll(".dot")
+    //         .data(data)
+    //         .enter().append("circle")
+    //         .attr("class", "dot")
+    //         .attr("r", 3.5)
+    //         .attr("cx", function (d) { return d.x; })
+    //         .attr("cy", function (d) { return d.y; })
+    //         .style("fill", function (d) { return Color.BLACK; })
+    //     // .on("mouseover", function (d) {
+    //     //     tooltip.transition()
+    //     //         .duration(200)
+    //     //         .style("opacity", .9);
+    //     //     tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d)
+    //     //         + ", " + yValue(d) + ")")
+    //     //         .style("left", (d3.event.pageX + 5) + "px")
+    //     //         .style("top", (d3.event.pageY - 28) + "px");
+    //     // })
+    //     // .on("mouseout", function (d) {
+    //     //     tooltip.transition()
+    //     //         .duration(500)
+    //     //         .style("opacity", 0);
+    //     // });
+    // }
+
+    // let data = [{ x: 15, y: 20 }, 
+    //             { x: 7, y: 18 }, 
+    //             { x: 11, y: 14 }];
+    // drawScatter(data);
+
+</script>

@@ -1,16 +1,40 @@
 <%include partials/header %>
 
 <script>
-    document.getElementById("filterButton").onclick = function () { console.log("hit button"); };
-    $("#filterButton").on("click", function(){
-        // $("#itemContainer").css("background-color", "blue");
-    })
+    $(document).ready(function () {
+        $("#filterButton").on("click", function () {
+            
+        })
+
+        let data = [
+            {
+                x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
+                y: [1, 3, 6],
+                type: 'scatter',
+                mode: 'markers'
+            }
+        ];
+        let layout = {
+            autosize: true,
+            height: 350,
+            margin: {
+                l: 20,
+                r: 20,
+                b: 30,
+                t: 20,
+                pad: 0
+            }
+        };
+
+        Plotly.newPlot('scatterPlot', data, layout);
+    });
 </script>
 
 
 <div class="container-fluid">
     <div class="row" id="report-container">
         <div class="col-sm-6" id="itemContainer">
+            <p style="padding-left: 15px;">Items</p>
             <div id="itemBar">
                 <ul class="list-unstyled components" style="margin-top: 15px;">
                     <% currentUser.itemCollection.forEach(function(item){ %>
@@ -19,7 +43,7 @@
                         <p> <%= item.name %></p>
                         <h4 class="pull-right"> $<%= item.price %></h4>
                         <p> <%= item.category %> </p>
-                        <p> Description </p>
+                        <p> <%= item.description %> </p>
                     </li>
                     <% }) %>
             </div>
@@ -32,10 +56,7 @@
                 <p> Maximum: $<%= max %> </p>
                 <p> Item Count: <%= count %></p>
             </div>
-            <div>
-                <p> more here</p>
-                <p> image of some kind</p>
-            </div>
+            <div id="scatterPlot"></div>
         </div>
     </div>
 </div>

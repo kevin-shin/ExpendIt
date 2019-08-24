@@ -9,7 +9,6 @@ router.get("/", function (req, res) {
     if (req.isAuthenticated()) {
         User.findById(req.user._id).populate("itemCollection").exec(
             function (err, currentUser) {
-
                 if (err) { 
                     console.log(err);
                 } else {

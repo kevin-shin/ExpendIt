@@ -17,20 +17,25 @@ router.post("/", function(req, res){
 		name: req.body.name,
 		category: req.body.category,
 		price: req.body.price,
-		description: req.body.description
+		description: req.body.description,
+		date: req.body.date,
 	};
+	console.log(newItem);
 	User.findById(req.user._id, function(err, user){
-		Item.create(newItem, function(err, newItem){
-			if (err) {
-				console.log(err);
-			} else {
-				console.log("new item created");
-				newItem.save();
-				user.itemCollection.push(newItem);
-				user.save();
-				res.redirect("/");
-			}
-		});
+		if (err) {
+			console.log(err);
+		} else {
+			Item.create(newItem, function(err, newItem){
+				if (err) {
+					console.log(err);
+				} else {
+					newItem.save();
+					user.itemCollection.push(newItem);
+					user.save();
+					res.redirect("/");
+				}
+			});
+		}
 	})
 	
 })
