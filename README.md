@@ -4,6 +4,23 @@
 
 ExpendIt is a web application which allows users to record their expenditures by category and price, which is then used as the data for various statistical interfaces on the application. 
 
+### To Start
+Clone this repository 
+```
+git clone https://github.com/kevin-shin/ExpendIt.git
+```
+Change directory to the main folder
+```
+cd ~/location/locationSubfolder/ExpendIt
+```
+Run the program
+```
+node app.js
+```
+
+Note: This app currently employs `Passport.js` authentication. If this is your first time to the app, you'll need to sign up for an account.
+
+
 ### Features
 1. (Main) Pie Chart to visualize totals by category
 2. (Report) Statistical interface which provides standard deviation, average, maximum
@@ -16,4 +33,4 @@ This project is thanks to many cool open-source libraries which provides the but
 
 ### Bug Reporting
 
-This project welcomes commentary on perceived bugs, feature ideas, and general guidance. Please open an issue--the more thorough the desription, the more helpful!
+This project welcomes commentary on perceived bugs, feature ideas, and general guidance. Please open an issue—the more thorough the desription, the more helpful!
