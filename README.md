@@ -1,5 +1,9 @@
 # ExpendIt
 
+### TO DO
+
+**The app currently is not connected to an available hosted Mongo database. Please check back in soon for this implementation!**
+
 ### Introduction
 
 ExpendIt is a web application which allows users to record their expenditures by category and price, which is then used as the data for various statistical interfaces on the application. 
